@@ -183,12 +183,8 @@ html[context="webapp"] .toolbar {
     float: none;
     display: inline-block;
   }
-  .media {
-    height: 250px;
-  }
   .content div {
     background-size: 48px;
-    max-height: calc(100vh - 340px);
   }
   .extra, .toolbar, .separator {
     display: none;
