@@ -1,10 +1,6 @@
-html, body {
+body {
   border: 0;
   margin: 0;
-  padding: 0;
-}
-
-body {
   padding: 0;
   height: 100%;
   margin: auto;
@@ -23,9 +19,79 @@ table tr td {
 }
 
 table tr td svg {
-  fill: #5d5d5d;
+  fill: #777;
+  margin: auto;
   pointer-events: none;
   vertical-align: middle;
+}
+
+audio {
+  margin: auto;
+  outline: none;
+  width: calc(100vw - 58px);
+  background-color: transparent;
+}
+
+audio::media-controls-panel {display: flex !important; opacity: 1.0 !important}
+audio::-moz-media-controls-panel {display: flex !important; opacity: 1.0 !important}
+audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !important}
+
+span {
+  color: #555;
+  float: right;
+  margin: 0 10px;
+  min-width: 64px;
+  text-align: right;
+  font-family: monospace;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  list-style: none;
+  font-family: arial;
+}
+
+li {
+  padding: 0;
+  color: #555;
+  height: 38px;
+  margin: 1px 0 0 0;
+  line-height: 38px;
+  padding-left: 10px;
+  font-family: monospace;
+  background-color: rgba(0,0,0,0.05);
+}
+
+a {
+  margin: 0;
+  color: #0068c3;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  font-family: monospace;
+}
+
+p {
+  border: 0;
+  padding: 0;
+  color: #555;
+  height: 38px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 5px auto;
+  overflow: hidden;
+  line-height: 38px;
+  text-indent: 10px;
+  white-space: nowrap;
+  font-family: monospace;
+  text-overflow: ellipsis;
+  border-top: solid 1px rgba(0,0,0,0.1);
+  border-bottom: solid 1px rgba(0,0,0,0.1);
 }
 
 button {
@@ -33,7 +99,7 @@ button {
   border: 0;
   color: #555;
   width: 100%;
-  height: 42px;
+  height: 48px;
   outline: none;
   padding: 0 5px;
   cursor: pointer;
@@ -47,69 +113,14 @@ button {
   transition: 300ms ease all;
 }
 
-audio {
-  margin: auto;
-  outline: none;
-  width: calc(100% - 48px);
-  background-color: transparent;
+button[disabled] {
+  opacity: 0.30;
+  pointer-events: none;
+  background-color: #FFF !important;
 }
 
-audio::media-controls-panel {display: flex !important; opacity: 1.0 !important}
-audio::-moz-media-controls-panel {display: flex !important; opacity: 1.0 !important}
-audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !important}
-
-ul {
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  list-style: none;
-  font-family: arial;
-}
-
-li {
-  color: #555;
-  padding: 5px;
-  margin: 1px 0 0 0;
-  line-height: 24px;
-  padding-left: 10px;
-  font-family: monospace;
+button:hover {
   background-color: rgba(0,0,0,0.05);
-}
-
-a {
-  margin: 0;
-  color: #0068c3;
-  font-size: 12px;
-  margin-left: 10px;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: none;
-  font-family: monospace;
-}
-
-p {
-  border: 0;
-  color: #555;
-  font-size: 12px;
-  overflow: hidden;
-  margin: 5px auto;
-  padding: 10px 5px;
-  line-height: 16px;
-  white-space: nowrap;
-  letter-spacing: 1px;
-  text-overflow: ellipsis;
-  font-family: arial,sans-serif;
-  border-top: solid 1px rgba(0,0,0,0.1);
-  border-bottom: solid 1px rgba(0,0,0,0.1);
-}
-
-span {
-  color: #555;
-  float: right;
-  margin: 0 5px;
-  min-width: 72px;
-  text-align: right;
-  font-family: monospace;
 }
 
 .container {
@@ -118,11 +129,12 @@ span {
 }
 
 .header {
-  border-spacing: 1px 0;
+  border-spacing: 0;
+  table-layout: fixed;
 }
 
 .toolbar {
-  width: 126px;
+  width: 250px;
 }
 
 .toolbar table {
@@ -130,7 +142,8 @@ span {
 }
 
 .toolbar table tr td {
-  height: 42px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
   text-align: center;
 }
@@ -141,52 +154,49 @@ span {
 
 .media {
   width: 100%;
-  height: 110px;
+  height: 128px;
+  display: flex;
   margin: 0 auto;
-  line-height: 150px;
-  text-align: center;
-  background-color: #848484;
+  align-items: center;
+  background-color: #555;
+  justify-content: center;
 }
 
 .content div {
   height: 100vh;
   overflow-y: auto;
-  max-height: calc(100vh - 200px);
-  background: url('../icons/128.png') no-repeat center center;
-  background-size: 64px;
+  max-height: calc(100vh - 227px);
+  background: url('../icons/48.png') no-repeat center center;
+  background-size: 48px;
 }
 
 .separator {
-  width: 16px;
-  color: #777;
-  text-align: center;
+  width: 16px !important;
+  text-align: center !important;
   background-color: transparent;
 }
 
-button[disabled] {
-  opacity: 0.50;
-  cursor: not-allowed;
-  background-color: #FFF !important;
-}
-
-button:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-html[context="webapp"] .extra,
-html[context="webapp"] .toolbar {
-  display: none;
-}
+#audio svg[loader] {display: none}
+#audio[loading] svg {display: none}
+#audio[loading] {pointer-events: none}
+#audio[loading] svg[loader] {display: block}
 
 @media (max-width: 500px) {
   span {
     float: none;
     display: inline-block;
   }
-  .content div {
-    background-size: 48px;
+  .media {
+    height: 250px;
   }
-  .extra, .toolbar, .separator {
+  .content div {
+    max-height: calc(100vh - 340px);
+  }
+  .toolbar, .separator {
     display: none;
   }
+}
+
+html[context="webapp"] .toolbar {
+  display: none;
 }
