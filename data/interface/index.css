@@ -2,10 +2,14 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
+  width: 100%;
   height: 100%;
   margin: auto;
   overflow: hidden;
-  width: calc(100% - 2px);
+}
+
+input {
+  vertical-align: middle;
 }
 
 table {
@@ -36,123 +40,7 @@ audio::media-controls-panel {display: flex !important; opacity: 1.0 !important}
 audio::-moz-media-controls-panel {display: flex !important; opacity: 1.0 !important}
 audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !important}
 
-span {
-  color: #555;
-  float: right;
-  margin: 0 10px;
-  min-width: 64px;
-  text-align: right;
-  font-family: monospace;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  list-style: none;
-  font-family: arial;
-}
-
-li {
-  padding: 0;
-  color: #555;
-  height: 38px;
-  margin: 1px 0 0 0;
-  line-height: 38px;
-  padding-left: 10px;
-  font-family: monospace;
-  background-color: rgba(0,0,0,0.05);
-}
-
-a {
-  margin: 0;
-  color: #0068c3;
-  font-size: 12px;
-  font-weight: 600;
-  margin-left: 10px;
-  font-style: normal;
-  display: inline-block;
-  text-decoration: none;
-  font-family: monospace;
-}
-
-p {
-  border: 0;
-  padding: 0;
-  color: #555;
-  height: 38px;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 5px auto;
-  overflow: hidden;
-  line-height: 38px;
-  text-indent: 10px;
-  white-space: nowrap;
-  font-family: monospace;
-  text-overflow: ellipsis;
-  border-top: solid 1px rgba(0,0,0,0.1);
-  border-bottom: solid 1px rgba(0,0,0,0.1);
-}
-
-button {
-  margin: 0;
-  border: 0;
-  color: #555;
-  width: 100%;
-  height: 48px;
-  outline: none;
-  padding: 0 5px;
-  cursor: pointer;
-  font-size: 12px;
-  overflow: hidden;
-  white-space: nowrap;
-  letter-spacing: 1px;
-  background-color: #FFF;
-  vertical-align: middle;
-  text-overflow: ellipsis;
-  transition: 300ms ease all;
-}
-
-button[disabled] {
-  opacity: 0.30;
-  pointer-events: none;
-  background-color: #FFF !important;
-}
-
-button:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .header {
-  border-spacing: 0;
-  table-layout: fixed;
-}
-
-.toolbar {
-  width: 250px;
-}
-
-.toolbar table {
-  table-layout: fixed;
-}
-
-.toolbar table tr td {
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.toolbar tr td:hover {
-  background-color: rgba(0,0,0,0.05);
-}
-
-.media {
   width: 100%;
   height: 128px;
   display: flex;
@@ -162,37 +50,235 @@ button:hover {
   justify-content: center;
 }
 
-.content div {
-  height: 100vh;
+.controls table {
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.controls table tr td {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.controls table tr td input[type='checkbox'] {
+  margin: 5px;
+}
+
+.controls table tr td div {
+  height: 52px;
+  margin: 10px;
+  cursor: pointer;
+  line-height: 52px;
+  user-select: none;
+  text-align: center;
+  transition: 300ms ease all;
+  border: solid 1px rgba(0,0,0,0.1);
+  background-color: rgba(0,0,0,0.01);
+}
+
+.controls table tr td div:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.controls table tr td div span {
+  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+  user-select: none;
+  padding: 10px 5px;
+  vertical-align: middle;
+  font-family: monospace;
+}
+
+.controls table tr td label {
+  width: auto;
+  color: #333;
+  height: 38px;
+  font-size: 12px;
+  text-indent: 5px;
+  overflow: hidden;
+  line-height: 38px;
+  display: inline-block;
+  font-family: monospace;
+  vertical-align: middle;
+}
+
+.controls table tr td label[required] {
+  pointer-events: none;
+}
+
+.controls table tr td label[required] p,
+.controls table tr td label[required] input {
+  opacity: 0.7;
+}
+
+.controls table tr td > span {
+  width: 22px;
+  height: 22px;
+  text-indent: 0;
+  cursor: pointer;
+  margin-left: 5px;
+  user-select: none;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  display: inline-block;
+  transition: 300ms ease all;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.controls table tr td > span:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.controls table tr td label p {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #555;
+  font-size: 12px;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  display: inline-block;
+  font-family: monospace;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  max-width: calc(100vw - 98px);
+}
+
+.footer {
+  margin: 0;
+  margin-top: 5px;
+  position: relative;
+  border-top: solid 1px rgba(0,0,0,0.1);
+}
+
+.footer details {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.footer summary {
+  color: #555;
+  height: 42px;
+  cursor: pointer;
+  font-size: 12px;
+  overflow: hidden;
+  font-weight: 600;
+  text-indent: 10px;
+  user-select: none;
+  line-height: 42px;
+  white-space: nowrap;
+  font-family: monospace;
+  text-overflow: ellipsis;
+  border-bottom: solid 1px rgba(0,0,0,0.1);
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  list-style: none;
   overflow-y: auto;
-  max-height: calc(100vh - 227px);
-  background: url('../icons/48.png') no-repeat center center;
-  background-size: 48px;
+  font-family: arial;
+  overflow-x: hidden;
+  max-height: calc(100vh - 290px);
 }
 
-.separator {
-  width: 16px !important;
-  text-align: center !important;
-  background-color: transparent;
+.footer li {
+  margin: 0;
+  padding: 0;
+  color: #555;
+  height: 42px;
+  display: flex;
+  line-height: 42px;
+  padding-left: 10px;
+  font-family: monospace;
+  border-bottom: solid 1px rgba(0,0,0,0.05);
 }
 
-#audio svg[loader] {display: none}
-#audio[loading] svg {display: none}
-#audio[loading] {pointer-events: none}
-#audio[loading] svg[loader] {display: block}
+.footer li a {
+  flex: 1;
+  margin: 0;
+  color: #0068c3;
+  font-size: 12px;
+  overflow: hidden;
+  margin-left: 10px;
+  font-style: normal;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+  font-family: monospace;
+  text-overflow: ellipsis;
+}
+
+.footer li span {
+  width: 64px;
+  float: right;
+  padding: 0 10px;
+  min-width: 64px;
+  max-width: 64px;
+  user-select: none;
+  text-align: center;
+}
+
+.footer .toolbar {
+  top: 0;
+  right: 0;
+  width: auto;
+  table-layout: fixed;
+  position: absolute;
+}
+
+.footer .toolbar tr td {
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.footer .toolbar tr td:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.action #loader svg {
+  vertical-align: unset;
+}
+
+.action #loader span {
+  padding-right: 3px;
+}
+
+.action div {
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+}
+
+.action #stop {display: none}
+.action #loader {display: none}
+.action #start {display: block}
+.action[loading] #stop {display: none}
+.action[loading] #start {display: none}
+.action[loading] #loader {display: block}
+.action[recording] #stop {display: block}
+.action[recording] #start {display: none}
+
+.controls #camera-permission[denied] svg {fill: #fff}
+.controls #microphone-permission[denied] svg {fill: #fff}
+.controls #camera-permission[denied] {background-color: #e74c3c}
+.controls #microphone-permission[denied] {background-color: #e74c3c}
 
 @media (max-width: 500px) {
-  span {
-    float: none;
-    display: inline-block;
-  }
-  .media {
-    height: 250px;
-  }
-  .content div {
-    max-height: calc(100vh - 340px);
-  }
-  .toolbar, .separator {
+  .toolbar {
     display: none;
   }
 }
