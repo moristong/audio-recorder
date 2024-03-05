@@ -23,7 +23,7 @@ table tr td {
 }
 
 table tr td svg {
-  fill: #777;
+  fill: #555;
   margin: auto;
   pointer-events: none;
   vertical-align: middle;
@@ -46,7 +46,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   display: flex;
   margin: 0 auto;
   align-items: center;
-  background-color: #555;
+  background-color: #333;
   justify-content: center;
 }
 
@@ -75,7 +75,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   user-select: none;
   text-align: center;
   transition: 300ms ease all;
-  border: solid 1px rgba(0,0,0,0.1);
+  border: solid 1px rgba(0,0,0,0.25);
   background-color: rgba(0,0,0,0.01);
 }
 
@@ -85,7 +85,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
 
 .controls table tr td div span {
   color: #333;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   user-select: none;
   padding: 10px 5px;
@@ -97,7 +97,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   width: auto;
   color: #333;
   height: 38px;
-  font-size: 12px;
+  font-size: 13px;
   text-indent: 5px;
   overflow: hidden;
   line-height: 38px;
@@ -138,8 +138,8 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   border: 0;
   margin: 0;
   padding: 0;
-  color: #555;
-  font-size: 12px;
+  color: #333;
+  font-size: 13px;
   overflow: hidden;
   user-select: none;
   white-space: nowrap;
@@ -154,7 +154,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   margin: 0;
   margin-top: 5px;
   position: relative;
-  border-top: solid 1px rgba(0,0,0,0.1);
+  border-top: solid 1px rgba(0,0,0,0.05);
 }
 
 .footer details {
@@ -168,7 +168,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   color: #555;
   height: 42px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   overflow: hidden;
   font-weight: 600;
   text-indent: 10px;
@@ -177,13 +177,13 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   white-space: nowrap;
   font-family: monospace;
   text-overflow: ellipsis;
-  border-bottom: solid 1px rgba(0,0,0,0.1);
+  border-bottom: solid 1px rgba(0,0,0,0.05);
 }
 
 .footer ul {
   margin: 0;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
   list-style: none;
   overflow-y: auto;
   font-family: arial;
@@ -207,7 +207,7 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
   flex: 1;
   margin: 0;
   color: #0068c3;
-  font-size: 12px;
+  font-size: 13px;
   overflow: hidden;
   margin-left: 10px;
   font-style: normal;

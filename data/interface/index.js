@@ -11,7 +11,8 @@ var config  = {
   },
   "page": {
     "microphone": "chrome://settings/content/microphone",
-    "convert": "https://webbrowsertools.com/convert-to-mp3/"
+    "mp3": "https://webbrowsertools.com/convert-to-mp3/",
+    "convert": "https://webbrowsertools.com/audio-converter/"
   },
   "addon": {
     "homepage": function () {
@@ -19,7 +20,7 @@ var config  = {
     }
   },
   "duration": function (ms) {
-    var date = new Date(null);
+    const date = new Date(null);
     date.setSeconds(ms / 1000);
     /*  */
     return date.toISOString().slice(11, 19);
@@ -37,14 +38,14 @@ var config  = {
       config.permission.microphone = config.storage.read("microphone-permission") !== undefined ? config.storage.read("microphone-permission") : true;  
       microphone.checked = config.permission.microphone;
       /*  */
-      var action = document.querySelector(".action");
+      const action = document.querySelector(".action");
       await new Promise((resolve, reject) => {window.setTimeout(resolve, 300)});
       action.removeAttribute("loading");
     },
     "stop": {
       "microphone": function () {
-        var tracks = config.stream.combine.getTracks();
-        for (var i = 0; i < tracks.length; i++) {
+        const tracks = config.stream.combine.getTracks();
+        for (let i = 0; i < tracks.length; i++) {
           tracks[i].stop();
           config.stream.combine.removeTrack(tracks[i]);
         }
@@ -63,7 +64,7 @@ var config  = {
       if (config.port.name === "win") {
         if (config.resize.timeout) window.clearTimeout(config.resize.timeout);
         config.resize.timeout = window.setTimeout(async function () {
-          var current = await chrome.windows.getCurrent();
+          const current = await chrome.windows.getCurrent();
           /*  */
           config.storage.write("interface.size", {
             "top": current.top,
@@ -79,7 +80,7 @@ var config  = {
     "name": '',
     "connect": function () {
       config.port.name = "webapp";
-      var context = document.documentElement.getAttribute("context");
+      const context = document.documentElement.getAttribute("context");
       /*  */
       if (chrome.runtime) {
         if (chrome.runtime.connect) {
@@ -111,7 +112,7 @@ var config  = {
     "write": function (id, data) {
       if (id) {
         if (data !== '' && data !== null && data !== undefined) {
-          var tmp = {};
+          let tmp = {};
           tmp[id] = data;
           config.storage.local[id] = data;
           chrome.storage.local.set(tmp, function () {});
@@ -127,13 +128,13 @@ var config  = {
       config.data.push(e.data);
     },
     "stop": function () {
-      var a = document.createElement('a');
-      var li = document.createElement("li");
-      var spansize = document.createElement("span");
-      var spanduration = document.createElement("span");
-      var filename = (new Date()).toString().slice(0, 24);
-      var blob = new Blob(config.data, {"type": "audio/webm"});
-      var duration = new Date(config.time.end - config.time.start);
+      const a = document.createElement('a');
+      const li = document.createElement("li");
+      const spansize = document.createElement("span");
+      const spanduration = document.createElement("span");
+      const filename = (new Date()).toString().slice(0, 24);
+      const blob = new Blob(config.data, {"type": "audio/webm"});
+      const duration = new Date(config.time.end - config.time.start);
       /*  */
       a.textContent = filename + " 🠯";
       a.href = URL.createObjectURL(blob);
@@ -161,14 +162,14 @@ var config  = {
           });
           /*  */
           if (config.stream.combine) {
-            var player = document.getElementById("player");
+            const player = document.getElementById("player");
             player.srcObject = config.stream.combine;
           }
         } catch (e) {
-          var b = await navigator.permissions.query({"name": "microphone"});
-          var d = b.state === "denied" && config.permission.microphone === true;
+          const b = await navigator.permissions.query({"name": "microphone"});
+          const d = b.state === "denied" && config.permission.microphone === true;
           /*  */
-          var error = '';
+          let error = '';
           if (d) error = "Microphone permission is denied!\nPlease adjust the permission and try again.";
           else if (config.permission.microphone === false) error = "Please mark the - Access Microphone - checkbox and try again."
           else error = "An error has occurred, please try again.";
@@ -188,15 +189,16 @@ var config  = {
     }
   },
   "load": function () {
-    var stop = document.getElementById("stop");
-    var start = document.getElementById("start");
-    var player = document.getElementById("player");
-    var reload = document.getElementById("reload");
-    var action = document.querySelector(".action");
-    var convert = document.getElementById("convert");
-    var support = document.getElementById("support");
-    var donation = document.getElementById("donation");
-    var microphone = document.getElementById("microphone");
+    const mp3 = document.getElementById("mp3");
+    const stop = document.getElementById("stop");
+    const start = document.getElementById("start");
+    const player = document.getElementById("player");
+    const reload = document.getElementById("reload");
+    const action = document.querySelector(".action");
+    const convert = document.getElementById("convert");
+    const support = document.getElementById("support");
+    const donation = document.getElementById("donation");
+    const microphone = document.getElementById("microphone");
     /*  */
     config.elements.info = {};
     config.elements.info.microphone = document.getElementById("microphone-permission");
@@ -210,26 +212,31 @@ var config  = {
       config.storage.write("microphone-permission", config.permission.microphone);
     });
     /*  */
+    mp3.addEventListener("click", function () {
+      const url = config.page.mp3;
+      chrome.tabs.create({"url": url, "active": true});
+    }, false);
+    /*  */
     convert.addEventListener("click", function () {
-      var url = config.page.convert;
+      const url = config.page.convert;
       chrome.tabs.create({"url": url, "active": true});
     }, false);
     /*  */
     config.elements.info.microphone.addEventListener("click", function () {
-      var url = config.page.microphone;
+      const url = config.page.microphone;
       chrome.tabs.create({"url": url, "active": true});
     }, false);
     /*  */
     support.addEventListener("click", function () {
       if (config.port.name !== "webapp") {
-        var url = config.addon.homepage();
+        const url = config.addon.homepage();
         chrome.tabs.create({"url": url, "active": true});
       }
     }, false);
     /*  */
     donation.addEventListener("click", function () {
       if (config.port.name !== "webapp") {
-        var url = config.addon.homepage() + "?reason=support";
+        const url = config.addon.homepage() + "?reason=support";
         chrome.tabs.create({"url": url, "active": true});
       }
     }, false);
@@ -249,7 +256,7 @@ var config  = {
     start.addEventListener("click", async function () {
       action.setAttribute("loading", '');
       await config.listener.start();
-      await new Promise((resolve, reject) => {window.setTimeout(resolve, 300)});
+      await new Promise(resolve => window.setTimeout(resolve, 300));
       action.removeAttribute("loading");
       /*  */
       if (config.stream.combine) {
