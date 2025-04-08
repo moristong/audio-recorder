@@ -286,3 +286,47 @@ audio::-webkit-media-controls-panel {display: flex !important; opacity: 1.0 !imp
 html[context="webapp"] .toolbar {
   display: none;
 }
+
+html[theme='dark'], 
+html[theme='dark'] body {
+  color: #ebebeb;
+  color-scheme: dark;
+  background-color: #1e1e1e;
+}
+
+html[theme='dark'] .header {
+  background-color: #1e1e1e;
+}
+
+html[theme='dark'] .footer li {
+  background-color: rgb(255 255 255 / 5%);
+}
+
+html[theme='dark'] .footer .toolbar tr td:hover,
+html[theme='dark'] .controls table tr td div:hover {
+  background-color: rgb(255 255 255 / 5%);
+}
+
+html[theme='dark'] .footer li,
+html[theme='dark'] .footer summary,
+html[theme='dark'] .controls table tr td label p,
+html[theme='dark'] .controls table tr td div span {
+  color: #ebebeb;
+}
+
+html[theme='dark'] .footer li a {
+  filter: brightness(150%);
+}
+
+html[theme='dark'] .footer,
+html[theme='dark'] .footer li,
+html[theme='dark'] .footer summary,
+html[theme='dark'] .controls table tr td div {
+  border-color: rgb(255 255 255 / 25%);
+}
+
+html[theme='dark'] table tr td svg,
+html[theme='dark'] .footer .toolbar svg,
+html[theme='dark'] .controls table tr td > span svg {
+  fill: #ebebeb;
+}
